@@ -3,5 +3,5 @@ export const AppConstants = {
     BODY: 'body',
     PARAMS: 'params',
     QUERY: 'query'
-  },
+  }
 };

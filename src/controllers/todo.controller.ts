@@ -8,7 +8,7 @@ export const createTodo = async (
   next: NextFunction
 ) => {
   try {
-    const newTodo = await Services.createTodo(req.body)
+    const newTodo = await Services.createTodo(req.body);
     res.status(200).json({
       message: 'Todo created successfully',
       data: newTodo,
@@ -28,11 +28,11 @@ export const getTodos = async (
     const { completed, limit, page } = req.query;
     const query = {
       ...(completed && { completed })
-    }
+    };
     const pagination = {
       limit: limit ? parseInt(limit as string) : 10,
       page: page ? parseInt(page as string) : 1
-    }
+    };
     const todos = await Services.getTodos(query, pagination);
     res.status(200).json({
       message: 'Todos retrieved successfully',
@@ -61,7 +61,7 @@ export const getTodo = async (
   } catch (error: any) {
     next(error);
   }
-}
+};
 
 export const updateTodo = async (
   req: Request,
@@ -78,7 +78,7 @@ export const updateTodo = async (
   } catch (error: any) {
     next(error);
   }
-}
+};
 
 export const deleteTodo = async (
   req: Request,
@@ -95,4 +95,4 @@ export const deleteTodo = async (
   } catch (error: any) {
     next(error);
   }
-}
+};

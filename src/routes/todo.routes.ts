@@ -6,31 +6,34 @@ import { ValidationMiddleware } from '../middlewares';
 
 const router = Router();
 
-
-
-router.post('/',
-    ValidationMiddleware(TodoValidation.new),
-    TodoController.createTodo
+router.post(
+  '/',
+  ValidationMiddleware(TodoValidation.new),
+  TodoController.createTodo
 );
 
-router.put('/:id',
-    ValidationMiddleware(TodoValidation.update),
-    ValidationMiddleware(TodoValidation.id, AppConstants.REQUEST_TYPE.PARAMS),
-    TodoController.updateTodo
+router.put(
+  '/:id',
+  ValidationMiddleware(TodoValidation.update),
+  ValidationMiddleware(TodoValidation.id, AppConstants.REQUEST_TYPE.PARAMS),
+  TodoController.updateTodo
 );
 
-router.get('/read/:id',
-    ValidationMiddleware(TodoValidation.id, AppConstants.REQUEST_TYPE.PARAMS),
-    TodoController.getTodo
+router.get(
+  '/read/:id',
+  ValidationMiddleware(TodoValidation.id, AppConstants.REQUEST_TYPE.PARAMS),
+  TodoController.getTodo
 );
 
-router.get('/',
-    ValidationMiddleware(TodoValidation.filter),
-    TodoController.getTodos
-)
-router.delete('/delete/:id',
-    ValidationMiddleware(TodoValidation.id, AppConstants.REQUEST_TYPE.PARAMS),
-    TodoController.deleteTodo
+router.get(
+  '/',
+  ValidationMiddleware(TodoValidation.filter),
+  TodoController.getTodos
+);
+router.delete(
+  '/delete/:id',
+  ValidationMiddleware(TodoValidation.id, AppConstants.REQUEST_TYPE.PARAMS),
+  TodoController.deleteTodo
 );
 
 export default router;

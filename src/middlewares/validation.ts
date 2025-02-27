@@ -9,8 +9,8 @@ export const ValidationMiddleware = (
   return (req: Request, res: Response, next: NextFunction) => {
     try {
       const options = {
-        abortEarly: true, 
-        allowUnknown: false, 
+        abortEarly: true,
+        allowUnknown: false,
         convert: true
       };
 

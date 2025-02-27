@@ -5,19 +5,17 @@ import { TODO_ROUTE } from '../routes';
 import cors from 'cors';
 
 const CreateServer = (): express.Application => {
-const APP: Express = express();
+  const APP: Express = express();
 
-APP.use(express.json());
-APP.use(express.urlencoded({ extended: true }));
-APP.use(
-  cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-  })
-);
-
-
+  APP.use(express.json());
+  APP.use(express.urlencoded({ extended: true }));
+  APP.use(
+    cors({
+      origin: '*',
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+      allowedHeaders: ['Content-Type', 'Authorization']
+    })
+  );
 
   APP.get('/api/heath', (req: Request, res: Response) => {
     res.status(200).json({
@@ -25,8 +23,7 @@ APP.use(
     });
   });
   APP.use('/api/todo', TODO_ROUTE);
-  
-  
+
   // Error Handler
   APP.use(Errorhandler);
 

@@ -13,15 +13,15 @@ type Config = {
   };
 };
 
-const config:Config = {
+const config: Config = {
   app: {
     env: process.env.NODE_ENV || 'development',
-    port: parseInt(process.env.PORT || "4000"),
-    name: process.env.APP_NAME || '',
+    port: parseInt(process.env.PORT || '4000'),
+    name: process.env.APP_NAME || ''
   },
   mongo: {
-    uri: process.env.MONGO_URI || ""
-  },
+    uri: process.env.MONGO_URI || ''
+  }
 };
 
 export default config;
