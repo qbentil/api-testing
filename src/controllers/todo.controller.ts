@@ -39,7 +39,7 @@ export const getTodos = async (
     const todos = await Services.getTodos(query, pagination);
 
     if (!todos.length) {
-      return next(new ApiError("No todos found", 404));
+      return next(new ApiError('No todos found', 404));
     }
     res.status(200).json({
       message: 'Todos retrieved successfully',
@@ -61,9 +61,8 @@ export const getTodo = async (
       _id: req.params.id
     });
 
-
     if (!todo) {
-      return next(new ApiError("Todo not found", 404));
+      return next(new ApiError('Todo not found', 404));
     }
     res.status(200).json({
       message: 'Todo retrieved successfully',
@@ -81,14 +80,16 @@ export const updateTodo = async (
   next: NextFunction
 ) => {
   try {
-
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-      return next(new ApiError("Invalid ID", 400));
+      return next(new ApiError('Invalid ID', 400));
     }
-    const todo = await Services.updateTodo(new mongoose.Types.ObjectId(req.params.id), req.body);
+    const todo = await Services.updateTodo(
+      new mongoose.Types.ObjectId(req.params.id),
+      req.body
+    );
 
     if (!todo) {
-      return next(new ApiError("Todo not found", 404));
+      return next(new ApiError('Todo not found', 404));
     }
     res.status(200).json({
       message: 'Todo updated successfully',
@@ -106,16 +107,16 @@ export const deleteTodo = async (
   next: NextFunction
 ) => {
   try {
-
-
     // if param not valid ObjectId
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-      return next(new ApiError("Invalid ID", 400));
+      return next(new ApiError('Invalid ID', 400));
     }
-    const todo = await Services.deleteTodo(new mongoose.Types.ObjectId(req.params.id));
+    const todo = await Services.deleteTodo(
+      new mongoose.Types.ObjectId(req.params.id)
+    );
 
     if (!todo) {
-      return next(new ApiError("Todo not found", 404));
+      return next(new ApiError('Todo not found', 404));
     }
     res.status(200).json({
       message: 'Todo deleted successfully',

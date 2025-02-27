@@ -50,6 +50,6 @@ export const deleteTodo = async (id: Types.ObjectId): Promise<ITodo | null> => {
   try {
     return await TodoModel.findByIdAndDelete(id);
   } catch (error: any) {
-    throw new Error(error.message || 'Database error'); 
+    throw new Error(error.message || 'Database error');
   }
 };

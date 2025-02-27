@@ -9,6 +9,7 @@ A simple Todo application built with Node.js, Express, TypeScript, and MongoDB. 
 - [Simple Todo Application](#simple-todo-application)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
+  - [Tools and Technologies](#tools-and-technologies)
   - [Installation](#installation)
   - [Usage](#usage)
   - [Testing](#testing)
@@ -25,6 +26,17 @@ A simple Todo application built with Node.js, Express, TypeScript, and MongoDB. 
 - Delete a todo.
 - Unit and integration testing with Jest.
 - Linting and formatting with ESLint and Prettier.
+
+---
+
+## Tools and Technologies
+
+- Node.js
+- Express
+- TypeScript
+- MongoDB
+- Jest
+- Supertest
 
 ---
 
@@ -223,11 +235,13 @@ The project includes both unit and integration tests.
    - Request validation is handled using Joi.
 
 3. **Error Handling:**
-   - Errors are propagated to a central error-handling middleware.
+   - Errors are propagated to a centralized error-handling middleware. 
 
 4. **Testing:**
    - Unit tests focus on individual functions and modules.
    - Integration tests focus on the API endpoints and their behavior.
+   - Jest is used as the testing framework.
+   - Supertest is used for making HTTP requests in the integration tests.
 
 5. **Environment Variables:**
    - Sensitive configuration (e.g., database URI) is stored in a .env file.
