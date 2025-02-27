@@ -12,6 +12,7 @@ A simple Todo application built with Node.js, Express, TypeScript, and MongoDB. 
   - [Installation](#installation)
   - [Usage](#usage)
   - [Testing](#testing)
+  - [Assumptions and Decisions](#assumptions-and-decisions)
 
 ---
 
@@ -174,4 +175,59 @@ Response Body:
 ## Testing
 
 The project includes both unit and integration tests.
-```bash
+
+1. **Run unit tests**:
+   ```bash
+   npm run test:unit
+   ```
+   This will run all the unit tests in all directories with the `.test.ts` extension.
+
+2. **Run unit tests with coverage**:
+   ```bash
+   npm run test:unit:coverage
+   ```
+   This will run all the unit tests and generate a coverage report in the `coverage` directory.
+
+3. **Run integration tests**:
+   ```bash
+   npm run test:integration
+   ```
+   This will run all the integration tests in the `tests` directory with the `.spec.ts` extension.
+
+4. **Run integration tests with coverage**:
+   ```bash
+   npm run test:integration:coverage
+   ```
+   This will run all the integration tests and generate a coverage report in the `coverage` directory.
+
+5. **Run all tests**:
+   ```bash
+   npm test
+   ```
+   This will run both the unit and integration tests.
+
+6. **Run all tests with coverage**:
+   ```bash
+   npm run test:coverage
+   ```
+   This will run both the unit and integration tests and generate a coverage report in the `coverage` directory.
+
+---
+
+## Assumptions and Decisions
+1. **Database:**
+   - MongoDB is used as the database.
+   - MongoDB Memory Server is used for testing to avoid dependency on a real database.
+
+2. **Validation:**
+   - Request validation is handled using Joi.
+
+3. **Error Handling:**
+   - Errors are propagated to a central error-handling middleware.
+
+4. **Testing:**
+   - Unit tests focus on individual functions and modules.
+   - Integration tests focus on the API endpoints and their behavior.
+
+5. **Environment Variables:**
+   - Sensitive configuration (e.g., database URI) is stored in a .env file.
