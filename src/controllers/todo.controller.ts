@@ -2,6 +2,9 @@ import * as Services from '../services';
 
 import { NextFunction, Request, Response } from 'express';
 
+import { ApiError } from '../utils';
+import mongoose from 'mongoose';
+
 export const createTodo = async (
   req: Request,
   res: Response,
@@ -34,6 +37,10 @@ export const getTodos = async (
       page: page ? parseInt(page as string) : 1
     };
     const todos = await Services.getTodos(query, pagination);
+
+    if (!todos.length) {
+      return next(new ApiError("No todos found", 404));
+    }
     res.status(200).json({
       message: 'Todos retrieved successfully',
       data: todos,
@@ -53,6 +60,11 @@ export const getTodo = async (
     const todo = await Services.getTodo({
       _id: req.params.id
     });
+
+
+    if (!todo) {
+      return next(new ApiError("Todo not found", 404));
+    }
     res.status(200).json({
       message: 'Todo retrieved successfully',
       data: todo,
@@ -69,7 +81,15 @@ export const updateTodo = async (
   next: NextFunction
 ) => {
   try {
-    const todo = await Services.updateTodo(req.params.id, req.body);
+
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return next(new ApiError("Invalid ID", 400));
+    }
+    const todo = await Services.updateTodo(new mongoose.Types.ObjectId(req.params.id), req.body);
+
+    if (!todo) {
+      return next(new ApiError("Todo not found", 404));
+    }
     res.status(200).json({
       message: 'Todo updated successfully',
       data: todo,
@@ -86,7 +106,17 @@ export const deleteTodo = async (
   next: NextFunction
 ) => {
   try {
-    const todo = await Services.deleteTodo(req.params.id);
+
+
+    // if param not valid ObjectId
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return next(new ApiError("Invalid ID", 400));
+    }
+    const todo = await Services.deleteTodo(new mongoose.Types.ObjectId(req.params.id));
+
+    if (!todo) {
+      return next(new ApiError("Todo not found", 404));
+    }
     res.status(200).json({
       message: 'Todo deleted successfully',
       data: todo,

@@ -1,5 +1,6 @@
+import mongoose, { QueryOptions, Types } from 'mongoose';
+
 import { ITodo } from '../models/types';
-import { QueryOptions } from 'mongoose';
 import { TodoModel } from '../models';
 
 export const createTodo = async (todo: Partial<ITodo>): Promise<ITodo> => {
@@ -35,7 +36,7 @@ export const getTodo = async (query: QueryOptions): Promise<ITodo | null> => {
 };
 
 export const updateTodo = async (
-  id: string,
+  id: mongoose.Types.ObjectId,
   todo: Partial<ITodo>
 ): Promise<ITodo | null> => {
   try {
@@ -45,10 +46,10 @@ export const updateTodo = async (
   }
 };
 
-export const deleteTodo = async (id: string): Promise<ITodo | null> => {
+export const deleteTodo = async (id: Types.ObjectId): Promise<ITodo | null> => {
   try {
     return await TodoModel.findByIdAndDelete(id);
   } catch (error: any) {
-    throw new Error(error);
+    throw new Error(error.message || 'Database error'); 
   }
 };

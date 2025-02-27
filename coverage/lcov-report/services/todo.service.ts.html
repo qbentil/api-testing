@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.08% </span>
+                <span class="strong">24% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/23</span>
+                <span class='fraction'>6/25</span>
             </div>
         
             
@@ -113,7 +113,11 @@
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -125,8 +129,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -134,21 +140,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -175,22 +183,23 @@ export const createTodo = <span class="fstat-no" title="function not covered" >a
   }
 };
 &nbsp;
-&nbsp;
-export const getTodos = <span class="fstat-no" title="function not covered" >async (q</span>uery: QueryOptions, pagination: { limit: number, page: number }): Promise&lt;ITodo[]&gt; =&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" > {</span></span>
+export const getTodos = <span class="fstat-no" title="function not covered" >async (</span>
+  query: QueryOptions,
+  pagination: { limit: number; page: number }
+): Promise&lt;ITodo[]&gt; =&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" > {</span></span>
   const { limit, page } = <span class="cstat-no" title="statement not covered" >pagination;</span>
   const skip = <span class="cstat-no" title="statement not covered" >(page - 1) * limit;</span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
 <span class="cstat-no" title="statement not covered" >    return await TodoModel.find(query)</span>
       .skip(skip)
       .limit(limit)
-      .sort({ createdAt: -1 })
-&nbsp;
+      .sort({ createdAt: -1 });
   } catch (error: any) {
 <span class="cstat-no" title="statement not covered" >    throw new Error(error);</span>
   }
 };
 &nbsp;
-export const getTodo = <span class="fstat-no" title="function not covered" >async (q</span>uery: QueryOptions) : Promise&lt;ITodo | null&gt; =&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" > {</span></span>
+export const getTodo = <span class="fstat-no" title="function not covered" >async (q</span>uery: QueryOptions): Promise&lt;ITodo | null&gt; =&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" > {</span></span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
 <span class="cstat-no" title="statement not covered" >    return await TodoModel.findOne(query);</span>
   } catch (error: any) {
@@ -198,13 +207,16 @@ export const getTodo = <span class="fstat-no" title="function not covered" >asyn
   }
 };
 &nbsp;
-export const updateTodo = <span class="fstat-no" title="function not covered" >async (i</span>d: string, todo: Partial&lt;ITodo&gt;) : Promise&lt;ITodo | null&gt; =&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" > {</span></span>
+export const updateTodo = <span class="fstat-no" title="function not covered" >async (</span>
+  id: string,
+  todo: Partial&lt;ITodo&gt;
+): Promise&lt;ITodo | null&gt; =&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" > {</span></span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
 <span class="cstat-no" title="statement not covered" >    return await TodoModel.findByIdAndUpdate(id, todo, { new: true });</span>
   } catch (error: any) {
 <span class="cstat-no" title="statement not covered" >    throw new Error(error);</span>
   }
-}
+};
 &nbsp;
 export const deleteTodo = <span class="fstat-no" title="function not covered" >async (i</span>d: string): Promise&lt;ITodo | null&gt; =&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" > {</span></span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
@@ -220,7 +232,7 @@ export const deleteTodo = <span class="fstat-no" title="function not covered" >a
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-02-27T19:27:46.122Z
+                at 2025-02-27T20:07:21.586Z
             </div>
         <script src="../prettify.js"></script>
         <script>

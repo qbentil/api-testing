@@ -11,7 +11,7 @@
     "lint": "eslint . --ext .ts",
     "test:unit": "jest",
     "test:unit:coverage": "jest --config jest.config.js --coverage",
-    "test:integration": "jest --config jest.integration.config.js",
+    "test:integration": "jest --config jest.integration.config.js --runInBand",
     "test:integration:coverage": "jest --config jest.integration.config.js --coverage",
     "test": "npm run test:unit && npm run test:integration",
     "test:coverage": "npm run test:unit:coverage && npm run test:integration:coverage"
