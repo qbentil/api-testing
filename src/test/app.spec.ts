@@ -1,5 +1,3 @@
-// test/app.test.ts
-
 import CreateServer from '../utils/server';
 import request from 'supertest';
 

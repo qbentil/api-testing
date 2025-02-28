@@ -35,6 +35,8 @@ A simple Todo application built with Node.js, Express, TypeScript, and MongoDB. 
 - Express
 - TypeScript
 - MongoDB
+- MongoDB Memory Server
+- Joi    
 - Jest
 - Supertest
 
