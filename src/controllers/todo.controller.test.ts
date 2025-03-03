@@ -1,7 +1,7 @@
 import * as Services from '../services';
 
 import CreateServer from '../utils/server';
-import { getID } from './../test/factory';
+import { getID } from '../test/factory';
 import mongoose from 'mongoose';
 import request from 'supertest';
 
